@@ -169,7 +169,7 @@ MariaDB [dbtoko1]> SELECT * FROM produk WHERE kode NOT LIKE 'M%';
 5 rows in set (0.001 sec)
 
 //3. Menampilkan produk-produk televisi
-MariaDB [dbtoko1]> SELECT * FROM produk WHERE kode IN ('TV01', 'TV02');
+MariaDB [dbtoko1]> SELECT * FROM produk WHERE nama LIKE 'TV%';
 +----+------+-----------+------------+------------+------+----------+-----------------+
 | id | kode | nama      | harga_beli | harga_jual | stok | min_stok | jenis_produk_id |
 +----+------+-----------+------------+------------+------+----------+-----------------+
