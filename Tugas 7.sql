@@ -155,22 +155,25 @@ MariaDB [dbtoko1]> CALL totalPesanan();
 +---------------+
 1 row in set (0.003 sec)
 
--- tanpa menggunakan declare
 MariaDB [dbtoko1]> DELIMITER $$
 MariaDB [dbtoko1]> CREATE PROCEDURE totalPesanan1()
     -> BEGIN
-    -> SELECT SUM(total) FROM pesanan;
+    -> DECLARE total_pesanan int;
+    -> SELECT COUNT(id) INTO total_pesanan FROM pesanan;
+    -> SELECT total_pesanan;
     -> END $$
-Query OK, 0 rows affected (0.004 sec)
+Query OK, 0 rows affected (0.006 sec)
 
 MariaDB [dbtoko1]> DELIMITER ;
 MariaDB [dbtoko1]> CALL totalPesanan1();
-+------------+
-| SUM(total) |
-+------------+
-|     230000 |
-+------------+
++---------------+
+| total_pesanan |
++---------------+
+|             2 |
++---------------+
 1 row in set (0.001 sec)
+
+Query OK, 1 row affected (0.002 sec)
 
 //Tampilkan seluruh pesanan dari semua pelanggan
 MariaDB [dbtoko1]> CREATE PROCEDURE showSeluruhPesanan()
